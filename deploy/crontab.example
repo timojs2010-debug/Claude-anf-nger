@@ -1,0 +1,6 @@
+# Alternative zum Dauerbetrieb: per cron (crontab -e)
+# Alle 15 Minuten Thesen auswerten und scannen (Mo–Fr), Report stündlich
+*/15 * * * 1-5 cd /home/pi/Claude-anf-nger && .venv/bin/python -m goldsignal evaluate >> data/cron.log 2>&1; .venv/bin/python -m goldsignal scan >> data/cron.log 2>&1
+5 * * * *      cd /home/pi/Claude-anf-nger && .venv/bin/python -m goldsignal report >> data/cron.log 2>&1
+# Wöchentlicher Backtest am Samstag
+0 9 * * 6      cd /home/pi/Claude-anf-nger && .venv/bin/python -m goldsignal backtest >> data/cron.log 2>&1

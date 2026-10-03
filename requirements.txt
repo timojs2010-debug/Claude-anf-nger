@@ -1,0 +1,7 @@
+requests>=2.31
+python-dotenv>=1.0
+pandas>=2.1
+numpy>=1.26
+tzdata>=2024.1        # Zeitzonen-Daten (wichtig unter Windows)
+# Optional: Thesen-Formulierung durch Claude (CLAUDE_THESIS=true)
+# anthropic>=1.0

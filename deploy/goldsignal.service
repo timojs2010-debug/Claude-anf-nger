@@ -1,0 +1,19 @@
+# systemd-Dienst für Dauerbetrieb (Linux-Server / Raspberry Pi)
+# Installation siehe README, Abschnitt "Dauerbetrieb".
+[Unit]
+Description=Gold-Signalsystem XAU_USD (nur Signale)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/Claude-anf-nger
+ExecStart=/home/pi/Claude-anf-nger/.venv/bin/python -m goldsignal loop
+Restart=always
+RestartSec=30
+# Bei Absturz meldet das Programm sich selbst; systemd startet es neu.
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
